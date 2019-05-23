@@ -1,0 +1,7 @@
+/bootloadHID.2019-04-16/**
+/flowchart/**
+labels.gddoc
+/hex/*.hex
+/hex/*.elf
+/hex/upload.sh
+/color_detect/color
