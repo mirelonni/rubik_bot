@@ -8,3 +8,7 @@ labels.gddoc
 /ckociemba/bin**
 /ckociemba/cache/**
 /cache/**
+/color_detect/calibrate
+/color_detect/state.txt
+/state.txt
+/solution.txt

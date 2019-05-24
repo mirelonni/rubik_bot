@@ -90,12 +90,12 @@ int main(int argc, char const *argv[]) {
   int space_small_2 = 2;
 
   map<char, Scalar> std_colors = {
-    { 'r', Scalar(0, 0, 255) },
-    { 'g', Scalar(0, 255, 0) },
-    { 'b', Scalar(255, 0, 0) },
-    { 'y', Scalar(0, 255, 255) },
-    { 'o', Scalar(0, 127, 255) },
-    { 'w', Scalar(255, 255, 255) }
+    { 'r', Scalar(93.4559, 56.6308, 195.836) },
+{ 'g', Scalar(101.331, 192.6, 99.5844) },
+{ 'b', Scalar(199.217, 129.722, 33.9943) },
+{ 'y', Scalar(114.743, 166.014, 160.418) },
+{ 'o', Scalar(69.1428, 108.128, 214.683) },
+{ 'w', Scalar(149.273, 148.158, 146.645) },
   };
 
   Rect s[CUBE][CUBE];
@@ -154,13 +154,13 @@ int main(int argc, char const *argv[]) {
   }
 
   ofstream myfile;
-  myfile.open ("state.txt");
+  myfile.open("state.txt");
 
   cube = Mat::zeros(space_small_1 + (offsets[1] - space_small_1) * 3, space_small_1 + (offsets[1] - space_small_1) * 4, CV_8UC3);
 ////U R F D B L
-  char side_order_color[6] = {'y', 'b', 'o', 'w', 'r', 'g'};
+  char side_order_color[6] = {'y', 'b', 'o', 'w', 'g', 'r'};
 
-  int side_order[6] = {4, 2, 1, 5, 3, 0};
+  int side_order[6] = {4, 2, 1, 5, 0, 3};
 
   int side_color = 0;
   int kociemba_flag = 0;
