@@ -4,10 +4,14 @@
 #include <opencv2/highgui.hpp>
 #include <cstdlib>
 #include <map>
+#include <iostream>
+#include <fstream>
 
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "search.h"
 
 #define CUBE 3
 
@@ -149,11 +153,14 @@ int main(int argc, char const *argv[]) {
     }
   }
 
+  ofstream myfile;
+  myfile.open ("state.txt");
+
   cube = Mat::zeros(space_small_1 + (offsets[1] - space_small_1) * 3, space_small_1 + (offsets[1] - space_small_1) * 4, CV_8UC3);
+////U R F D B L
+  char side_order_color[6] = {'y', 'b', 'o', 'w', 'r', 'g'};
 
-  char side_order_color[6] = {'y', 'g', 'o', 'b', 'r', 'w'};
-
-  int side_order[6] = {4, 0, 1, 2, 3, 5};
+  int side_order[6] = {4, 2, 1, 5, 3, 0};
 
   int side_color = 0;
   int kociemba_flag = 0;
@@ -238,17 +245,26 @@ int main(int argc, char const *argv[]) {
       kociemba_flag = 0;
     } else if (key == 's' && kociemba_flag == 1) {
       cout << "SENDING TO KOCIEMBA" << endl;
+      for (int i = 0; i < 54; i++) {
+        printf("%c", kociemba_input[i]);
+        myfile << kociemba_input[i];
+      }
+      printf("\n");
+      myfile << endl;
     }
 
     if (side_color == 6 && kociemba_flag == 0) {
       for (int side = 0; side < 6; side++) {
         for (int i = 0; i < CUBE; i++) {
           for (int j = 0; j < CUBE; j++) {
+            //printf("%d ", side * 9 + i * 3 + j);
 
-            kociemba_input[side_order[side]* 9 + i * 3 + j] = cube_codes[side_order[side]][i][j];
+            kociemba_input[side * 9 + i * 3 + j] = cube_codes[side_order[side]][i][j];
           }
+          //printf("\n");
 
         }
+        //printf("\n\n\n");
 
       }
       kociemba_flag = 1;

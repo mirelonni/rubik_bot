@@ -5,3 +5,6 @@ labels.gddoc
 /hex/*.elf
 /hex/upload.sh
 /color_detect/color
+/ckociemba/bin**
+/ckociemba/cache/**
+/cache/**
